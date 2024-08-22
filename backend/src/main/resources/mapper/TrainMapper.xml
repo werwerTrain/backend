@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.buaa.werwertrip.mapper.ITrainMapper">
+    <select id="searchTrain" resultType="com.buaa.werwertrip.entity.Train">
+        select * from trains
+        where startStation in (
+        select stationName from stations where (stationName = #{start_station} or cityName = #{start_station})
+        )
+        and arrivalStation in (
+        select stationName from stations where (stationName = #{arrive_station} or cityName = #{arrive_station})
+        )
+        and date =#{date}
+          and haveCanceled = 0
+        <choose>
+            <when test="is_GD == 2">
+                AND (type = 'Gaotie' OR type = 'Huoche')
+            </when>
+            <when test="is_GD == 0">
+                AND type = 'Huoche'
+            </when>
+            <when test="is_GD == 1">
+                AND type = 'Gaotie'
+            </when>
+        </choose>
+        ORDER BY
+        <choose>
+            <when test="sort_type == 2">
+                startTime DESC
+            </when>
+            <when test="sort_type == 3">
+                duration ASC
+            </when>
+            <when test="sort_type == 1">
+                startTime ASC
+            </when>
+        </choose>
+    </select>
+    <select id="searchStopover" resultType="com.buaa.werwertrip.entity.Stopover">
+        select *
+        from stopovers
+        where trainId = #{trainId}
+        order by stationId
+    </select>
+    <insert id="addTrainOrderDetail">
+        insert into trainorders(oid, trainId, trainDate, name, identification, seatType)
+        values (#{oid}, #{trainId}, #{trainDate}, #{name}, #{identification}, #{seatType})
+    </insert>
+    <select id="getSelfOrderDetail">
+        select *
+        from trainorders
+        where oid = #{oid}
+          and identification = #{userID}
+    </select>
+    <select id="getTrainByIdAndDate">
+        select *
+        from trains
+    where trainId=#{trainId} and date=#{trainDate}
+    </select>
+    <select id="getStartTime">
+        select startTime,arrivalTime
+        from trains
+        where trainId=#{trainId} and date=#{trainDate}
+    </select>
+    <select id="getTrainIdAndDate">
+        select trainId,trainDate
+        from trainorders
+        where oid=#{orderId}
+    </select>
+    <update id="updateTrainSeat">
+        update trains
+        set businessSeatSurplus = businessSeatSurplus-#{num1}
+        and firstClassSeatSurplus = firstClassSeatSurplus-#{num2}
+        and secondClassSeatSurplus = secondClassSeatSurplus-#{num3}
+        and softSleeperSurplus = softSleeperSurplus-#{num4}
+        and hardSleeperSurplus = hardSleeperSurplus-#{num5}
+        and hardSeatSurplus = hardSeatSurplus-#{num6}
+        where trainId = #{trainId}
+        and date=#{trainDate}
+    </update>
+    <select id="getTrainState" resultType="Boolean">
+        select haveCanceled
+        from trains
+        where trainId = #{trainId} and date = #{trainDate}
+    </select>
+
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.buaa.werwertrip.mapper.IPassengerMapper">
+    <insert id="addPassenger">
+        insert into passengers(name, identification, phone, userId)
+        values (#{name}, #{identification}, #{phone}, #{userId})
+    </insert>
+    <!--    <update id="updatePassengerName">-->
+    <!--        update passengers-->
+    <!--        set name=#{newname}-->
+    <!--        where userId = #{id}-->
+    <!--          and identification = #{oldidentification}-->
+    <!--    </update>-->
+    <!--    <update id="updatePassengerIdentification">-->
+    <!--        update passengers-->
+    <!--        set identification=#{newidentification}-->
+    <!--        where userId = #{id}-->
+    <!--          and identification = #{oldidentification}-->
+    <!--    </update>-->
+    <!--    <update id="updatePassengerPhone">-->
+    <!--        update passengers-->
+    <!--        set phone=#{newphone}-->
+    <!--        where userId = #{id}-->
+    <!--          and identification = #{oldidentification}-->
+    <!--    </update>-->
+    <update id="updatePassenger">
+        UPDATE passengers
+        SET name           = CASE WHEN #{newname} IS NULL THEN name ELSE #{newname} END,
+            identification = CASE WHEN #{newidentification} IS NULL THEN identification ELSE #{newidentification} END,
+            phone          = CASE WHEN #{newphone} IS NULL THEN phone ELSE #{newphone} END
+        WHERE userId = #{id}
+          AND identification = #{oldidentification}
+    </update>
+    <select id="showPassengerInfo">
+        SELECT *,
+               CASE
+                   WHEN identification = #{id} THEN 0
+                   ELSE 1
+                   END AS sortValue
+        FROM passengers
+        where userId = #{id}
+        ORDER BY sortValue;
+    </select>
+    <delete id="deletePassenger">
+        delete
+        from passengers
+        where userId = #{userId}
+          and identification = #{identification}
+          and name = #{passengerName}
+    </delete>
+    <select id="getPassengerByUidAndId">
+        select *
+        from passengers
+        where userId = #{id}
+          and identification = #{identification}
+    </select>
+</mapper>

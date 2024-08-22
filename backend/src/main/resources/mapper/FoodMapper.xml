@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.buaa.werwertrip.mapper.IFoodMapper">
+    <insert id="addFoodOrder">
+        insert into foodOrders(oid, foodName, count, trainId, trainDate, mealTime, mealDate, photo)
+        VALUES (#{oid}, #{foodName}, #{count}, #{trainId}, #{trainDate}, #{mealTime}, #{mealDate}, #{photo})
+    </insert>
+
+    <select id="getTrainRelatedFoodOrders">
+        select *
+        from orders where oid in (
+            select f.oid
+                from foodOrders f
+                where (f.trainId, f.trainDate) in (
+                    select t.trainId, t.trainDate
+                    from trainorders t
+                             join orders o on o.oid = t.oid
+                    where t.trainId = #{tid} and t.trainDate = #{date} and o.uid = #{uid}
+                )
+            )
+    </select>
+</mapper>

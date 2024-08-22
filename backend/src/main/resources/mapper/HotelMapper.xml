@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.buaa.werwertrip.mapper.IHotelMapper">
+    <select id="searchHotelByCity">
+        SELECT id
+        FROM hotels
+        WHERE city = #{arrive_station}
+    </select>
+    <select id="getCommentNum">
+        select count(*)
+        from comments
+        where hotel_id = #{id}
+    </select>
+    <select id="searchComment">
+        select *
+        from comments
+        where hotel_id = #{id}
+    </select>
+    <select id="getHotelRank">
+        select AVG(grade)
+        from comments
+        where hotel_id = #{id}
+    </select>
+    <select id="getPlaces">
+        select distinct city
+        from hotels
+    </select>
+    <select id="getAvailableRoom">
+        select MIN(num), MIN(price), name
+        from rooms
+        where date >= #{arrive_date}
+          and date &lt; #{ldeparture_date}
+          and hotel_id = #{id}
+        group by name
+    </select>
+    <select id="getRoomDetail">
+        select MIN(num), AVG(price), name,photo,size,others,bedSize
+        from rooms
+        where date >= #{arrive_date}
+          and date &lt; #{ldeparture_date}
+          and hotel_id = #{id}
+        group by name,photo,size,others,bedSize
+    </select>
+    <select id="getHotelInfo">
+        select *
+        from hotels
+        where id = #{id}
+    </select>
+    <select id="getHotelPhoto">
+        select photoUrl
+        from hotelphotos
+        where id=#{id}
+    </select>
+    <insert id="addHotelorderDetail">
+        insert into hotelorders(id,oid,checkinTime,checkoutTime,roomNum,roomType,customerName,customerId)
+        values(#{id},#{oid},#{checkinTime},#{checkoutTime},#{roomNum},#{roomType},#{customerName},#{customerId})
+    </insert>
+    <select id="getHotelName">
+        select name, position
+        from hotels
+        where id = #{id}
+    </select>
+    <select id="getHotelOrderDetail">
+        select *
+        from hotelorders
+        where oid = #{oid}
+    </select>
+    <update id="updateNumWhenBill">
+        update rooms
+        set num=num-#{room_num}
+        where hotel_id=#{hotel_id}
+        and date >= #{checkin_time}
+          and date &lt; #{checkout_time}
+    </update>
+    <update id="updateNumWhenCancel">
+        update rooms
+        set num=num+#{room_num}
+        where hotel_id=#{hotel_id}
+          and date >= #{checkin_time}
+          and date &lt; #{checkout_time}
+    </update>
+</mapper>

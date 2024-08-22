@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.buaa.werwertrip.mapper.IVerificationCodeMapper">
+    <select id="getVerificationCode">
+        select * from verificationCodes
+        where email = #{email}
+    </select>
+
+    <insert id="addVerificationCode">
+        insert into verificationCodes (email, code, generatedAt, expiresAt)
+        values (#{email}, #{code}, #{generatedAt}, #{expiresAt})
+        on duplicate key update code        = values(code),
+                                generatedAt = values(generatedAt),
+                                expiresAt   = values(expiresAt)
+    </insert>
+</mapper>
