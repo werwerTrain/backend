@@ -4,21 +4,21 @@ pipeline {
     environment {
         // 设置 Docker 镜像的标签
         BACKEND_IMAGE = "3181577132/backend:latest"
-        DOCKER_CREDENTIALS_ID = "361fae32-8683-4422-8312-c1e80b9dceed" // Jenkins 中 Docker Hub 凭据的 ID
+        // DOCKER_CREDENTIALS_ID = "361fae32-8683-4422-8312-c1e80b9dceed" // Jenkins 中 Docker Hub 凭据的 ID
     }
 
     stages {
 
-        stage('Docker Login') {
-            steps {
-                script {
-                    // 登录到 Docker Hub
-                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                        bat "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
-                    }
-                }
-            }
-        }
+        // stage('Docker Login') {
+        //     steps {
+        //         script {
+        //             // 登录到 Docker Hub
+        //             withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+        //                 bat "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
+        //             }
+        //         }
+        //     }
+        // }
 
         stage('Build Backend') {
             steps {
