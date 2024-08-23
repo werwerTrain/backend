@@ -47,7 +47,7 @@ pipeline {
 
         stage('Running Test Scenario') {
             steps {
-                sh 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/454814/detail?token=xMdFQ9lwtW8wtYkrsTsMO5 -r html,cli'
+                sh '/Applications/Apifox.app/Contents/MacOS run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/454814/detail?token=xMdFQ9lwtW8wtYkrsTsMO5 -r html,cli'
             }
         }
 
