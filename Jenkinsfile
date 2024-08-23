@@ -16,7 +16,6 @@ pipeline {
                 }
             }
         }
-
         stage('Push Backend Image') {
             steps {
                 script {
