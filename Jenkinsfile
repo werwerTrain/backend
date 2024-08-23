@@ -55,7 +55,7 @@ pipeline {
         // }
         stage('Running Test Scenario') {
             steps {
-                bat 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/454816/detail?token=xaVqAtKH26y9FNq26te2vH -r html,cli'
+                bat 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/454816/detail?token=xaVqAtKH26y9FNq26te2vH -r html,cli -u "http://192.168.65.3:31953"'
             }
         }
     }
