@@ -7,6 +7,11 @@ pipeline {
     }
 
     stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'luluplum', url: 'https://github.com/werwerTrain/backend.git'
+            }
+        }
 
         stage('Build Backend') {
             steps {
@@ -17,14 +22,7 @@ pipeline {
             }
         }
         
-        stage('Push Backend Image') {
-            steps {
-                script {
-                    // 推送后端 Docker 镜像到 Docker Registry
-                    sh 'docker push ${BACKEND_IMAGE}'
-                }
-            }
-        }
+    
 
         stage('Deploy to Kubernetes') {
             steps {
