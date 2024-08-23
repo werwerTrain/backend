@@ -57,6 +57,7 @@ pipeline {
             sh 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/454758/detail?token=xMbvrz8cUvpDxA26Cf0rMc -r html,cli'
             }
         }
+    }
 
     post {
         always {
