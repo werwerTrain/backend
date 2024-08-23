@@ -1,9 +1,11 @@
 pipeline {
     agent any
 
+    tools {nodejs "{nodejs18}"}
+
     environment {
         // 设置 Docker 镜像的标签
-        BACKEND_IMAGE = "3181577132/backend:latest"
+        BACKEND_IMAGE = "3181577132/backend:latestApifox"
         KUBECONFIG = credentials('kubectl_id')
         // DOCKER_CREDENTIALS_ID = "361fae32-8683-4422-8312-c1e80b9dceed" // Jenkins 中 Docker Hub 凭据的 ID
     }
@@ -57,17 +59,15 @@ pipeline {
             }
         }
 
-        stage('Integration Test') {
+        stage('Install Apifox CLI') {
             steps {
-                echo 'tested!'
-                // 等待应用启动
-                //sleep(time: 30, unit: 'SECONDS')
-                
-                // 使用测试工具进行集成测试
-                
-                // 使用 Postman Collection 进行测试
-                //powershell 'newman run collection.json'  // 如果使用 Newman 运行 Postman 测试
-                
+                bat 'npm install -g apifox-cli'
+            }
+        }
+        
+        stage('Running Test Scenario') {
+            steps {
+                bat'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/454752/detail?token=xAjJfgLp7PZnYRurGHvTOv -r html,cli'
             }
         }
     }
