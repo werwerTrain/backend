@@ -42,7 +42,7 @@ pipeline {
             steps {
                 script {
                     // 应用 Kubernetes 配置
-                    bat "kubectl apply -f k8s/backend-deployment.yaml"
+                    bat "kubectl apply -f k8s/backend-deployment.yaml --validate=false"
                 }
             }
         }
@@ -51,7 +51,7 @@ pipeline {
             steps {
                 script {
                     // 应用 Kubernetes 配置
-                    bat "kubectl apply -f k8s/backend-service.yaml"
+                    bat "kubectl apply -f k8s/backend-service.yaml --validate=false"
                 }
             }
         }
