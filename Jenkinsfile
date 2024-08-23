@@ -67,9 +67,7 @@ pipeline {
     post {
         always {
             // 这里可以添加一些清理步骤，例如清理工作目录或通知
-            node {
-                bat 'docker system prune -f'
-            }
+            bat 'docker system prune -f'
         }
         success {
             echo 'Build and deployment succeeded!'
