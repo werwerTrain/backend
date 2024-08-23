@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    tools {nodejs "{nodejs18}"}
+    tools {nodejs "nodejs"}
 
     environment {
         // 设置 Docker 镜像的标签
