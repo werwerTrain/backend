@@ -11,12 +11,20 @@ pipeline {
     }
 
     stages {
+        stage('Check Backend Directory') {
+            steps {
+                script {
+                    if (!fileExists('backend')) {
+                        error "The 'backend' directory does not exist."
+                    }
+                }
+            }
+        }
+
         stage('Build Backend') {
             steps {
                 script {
-                    node {
-                        bat "docker build -t ${BACKEND_IMAGE} ./backend"
-                    }
+                    bat "docker build -t ${BACKEND_IMAGE} ./backend"
                 }
             }
         }
@@ -24,10 +32,8 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    node {
-                        bat "kubectl apply -f k8s/backend-deployment.yaml"
-                        bat "kubectl apply -f k8s/backend-service.yaml"
-                    }
+                    bat "kubectl apply -f k8s/backend-deployment.yaml"
+                    bat "kubectl apply -f k8s/backend-service.yaml"
                 }
             }
         }
@@ -35,9 +41,7 @@ pipeline {
         stage('Install Apifox CLI') {
             steps {
                 script {
-                    node {
-                        bat 'npm install -g apifox-cli'
-                    }
+                    bat 'npm install -g apifox-cli'
                 }
             }
         }
@@ -45,9 +49,7 @@ pipeline {
         stage('Running Test Scenario') {
             steps {
                 script {
-                    node {
-                        bat 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/454752/detail?token=xAjJfgLp7PZnYRurGHvTOv -r html,cli'
-                    }
+                    bat 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/454752/detail?token=xAjJfgLp7PZnYRurGHvTOv -r html,cli'
                 }
             }
         }
@@ -56,9 +58,7 @@ pipeline {
     post {
         always {
             script {
-                node {
-                    bat "docker system prune -f"
-                }
+                bat "docker system prune -f"
             }
         }
         success {
