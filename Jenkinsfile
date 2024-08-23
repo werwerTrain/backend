@@ -19,14 +19,14 @@ pipeline {
             }
         }
 
-        stage('Push Backend Image') {
-            steps {
-                script {
-                    // 推送后端 Docker 镜像到 Docker Registry
-                    bat 'docker push %BACKEND_IMAGE%'
-                }
-            }
-        }
+        // stage('Push Backend Image') {
+        //     steps {
+        //         script {
+        //             // 推送后端 Docker 镜像到 Docker Registry
+        //             bat 'docker push %BACKEND_IMAGE%'
+        //         }
+        //     }
+        // }
 
         stage('Deploy to Kubernetes') {
             steps {
