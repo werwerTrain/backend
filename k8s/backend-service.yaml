@@ -4,7 +4,7 @@ metadata:
   name: backend-apifox-service
 spec:
   selector:
-    app: backend
+    run: backend
   ports:
     - protocol: TCP
       port: 80
