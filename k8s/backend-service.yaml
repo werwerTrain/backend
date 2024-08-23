@@ -7,7 +7,7 @@ spec:
     run: backend
   ports:
     - protocol: TCP
-      nodeport：30000
+      nodeport: 30000
       port: 80
       targetPort: 8080
   type: NodePort
