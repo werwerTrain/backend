@@ -4,6 +4,7 @@ pipeline {
     environment {
         // 设置 Docker 镜像的标签
         BACKEND_IMAGE = "3181577132/backend:latest"
+        KUBECONFIG = credentials('kubectl_id')
         // DOCKER_CREDENTIALS_ID = "361fae32-8683-4422-8312-c1e80b9dceed" // Jenkins 中 Docker Hub 凭据的 ID
     }
 
