@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: backendApifox-deployment
 spec:
   replicas: 1
   selector:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: 3181577132/backend:latest
+        image: 3181577132/backend:latestApifox
         ports:
         - containerPort: 8080
 
