@@ -61,13 +61,17 @@ pipeline {
 
         stage('Install Apifox CLI') {
             steps {
-                bat 'npm install -g apifox-cli'
+                script{
+                    bat 'npm install -g apifox-cli'
+                }
             }
         }
         
         stage('Running Test Scenario') {
             steps {
-                bat'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/454752/detail?token=xAjJfgLp7PZnYRurGHvTOv -r html,cli'
+                script{
+                    bat'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/454752/detail?token=xAjJfgLp7PZnYRurGHvTOv -r html,cli'
+                }
             }
         }
     }
