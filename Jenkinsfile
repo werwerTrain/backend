@@ -1,16 +1,10 @@
 pipeline {
     agent any
 
-    environment {
-        // 设置 Docker 镜像的标签
-        FRONTEND_IMAGE = "luluplum/frontend:latest"
-        BACKEND_IMAGE = "luluplum/backend:latest"
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'luluplum', url: 'https://github.com/werwerTrain/backend.git'
+                git branch: 'sxq', url: 'https://github.com/werwerTrain/backend.git'
             }
         }
         
@@ -18,8 +12,13 @@ pipeline {
         stage('Build Backend') {
             steps {
                 script {
-                    // 构建后端 Docker 镜像
-                    sh 'docker build -t ${BACKEND_IMAGE} ./backend'
+                    // 清理原有镜像，构建后端 Docker 镜像
+                    bat '''
+                    docker stop backend
+                    docker rm backend
+                    docker rmi backend
+                    docker build -t backend ./backend
+                    '''
                 }
             }
         }
@@ -27,7 +26,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    sh 'kubectl apply -f k8s/backend-deployment.yaml'
+                    bat 'kubectl apply -f k8s/backend-deployment.yaml'
                 }
             }
         }
@@ -36,22 +35,8 @@ pipeline {
             steps {
                 script {
                     // 应用 Kubernetes 配置
-                    sh 'kubectl apply -f k8s/backend-service.yaml'
+                    bat 'kubectl apply -f k8s/backend-service.yaml'
                 }
-            }
-        }
-
-        stage('Integration Test') {
-            steps {
-                echo 'tested!'
-                // 等待应用启动
-                //sleep(time: 30, unit: 'SECONDS')
-                
-                // 使用测试工具进行集成测试
-                
-                // 使用 Postman Collection 进行测试
-                //sh 'newman run collection.json'  // 如果使用 Newman 运行 Postman 测试
-                
             }
         }
     }
@@ -59,7 +44,7 @@ pipeline {
     post {
         always {
             // 这里可以添加一些清理步骤，例如清理工作目录或通知
-            sh 'docker system prune -f'
+            bat 'docker system prune -f'
         }
         success {
             echo 'Build and deployment succeeded!'
