@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // 设置 Docker 镜像的标签
-        BACKEND_IMAGE = "luluplum/backend:latest"
+        BACKEND_IMAGE = "bush/backend:latest"
     }
 
     stages {
@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // 构建后端 Docker 镜像
-                    sh 'docker build -t ${BACKEND_IMAGE} ./backend'
+                    bat 'docker build -t %BACKEND_IMAGE% .\\backend'
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     // 推送后端 Docker 镜像到 Docker Registry
-                    sh 'docker push ${BACKEND_IMAGE}'
+                    bat 'docker push %BACKEND_IMAGE%'
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             steps {
                 script {
                     // 应用 Kubernetes 配置
-                    sh 'kubectl apply -f k8s/backend-deployment.yaml'
+                    bat 'kubectl apply -f k8s\\backend-deployment.yaml'
                 }
             }
         }
@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     // 应用 Kubernetes 配置
-                    sh 'kubectl apply -f k8s/backend-service.yaml'
+                    bat 'kubectl apply -f k8s\\backend-service.yaml'
                 }
             }
         }
@@ -48,12 +48,12 @@ pipeline {
             steps {
                 echo 'tested!'
                 // 等待应用启动
-                //sleep(time: 30, unit: 'SECONDS')
+                //bat 'timeout /T 30'
                 
                 // 使用测试工具进行集成测试
                 
                 // 使用 Postman Collection 进行测试
-                //sh 'newman run collection.json'  // 如果使用 Newman 运行 Postman 测试
+                //bat 'newman run collection.json'  // 如果使用 Newman 运行 Postman 测试
                 
             }
         }
@@ -62,7 +62,7 @@ pipeline {
     post {
         always {
             // 这里可以添加一些清理步骤，例如清理工作目录或通知
-            sh 'docker system prune -f'
+            bat 'docker system prune -f'
         }
         success {
             echo 'Build and deployment succeeded!'
