@@ -12,7 +12,9 @@ pipeline {
             steps {
                 script {
                     // 构建后端 Docker 镜像
+                    echo 'Starting Docker build...'
                     bat 'docker build -t %BACKEND_IMAGE% .\\backend'
+                    echo 'Docker build completed.'
                 }
             }
         }
