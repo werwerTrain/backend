@@ -1,7 +1,9 @@
 pipeline {
     agent any
 
-    tools { nodejs "nodejs" }
+    tools { 
+        nodejs "nodejs" 
+    }
 
     environment {
         BACKEND_IMAGE = "3181577132/backend:latestApifox"
@@ -12,7 +14,9 @@ pipeline {
         stage('Build Backend') {
             steps {
                 script {
-                    bat "docker build -t ${BACKEND_IMAGE} ./backend"
+                    node {
+                        bat "docker build -t ${BACKEND_IMAGE} ./backend"
+                    }
                 }
             }
         }
@@ -20,8 +24,10 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    bat "kubectl apply -f k8s/backend-deployment.yaml"
-                    bat "kubectl apply -f k8s/backend-service.yaml"
+                    node {
+                        bat "kubectl apply -f k8s/backend-deployment.yaml"
+                        bat "kubectl apply -f k8s/backend-service.yaml"
+                    }
                 }
             }
         }
@@ -29,7 +35,9 @@ pipeline {
         stage('Install Apifox CLI') {
             steps {
                 script {
-                    bat 'npm install -g apifox-cli'
+                    node {
+                        bat 'npm install -g apifox-cli'
+                    }
                 }
             }
         }
@@ -37,7 +45,9 @@ pipeline {
         stage('Running Test Scenario') {
             steps {
                 script {
-                    bat 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/454752/detail?token=xAjJfgLp7PZnYRurGHvTOv -r html,cli'
+                    node {
+                        bat 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/454752/detail?token=xAjJfgLp7PZnYRurGHvTOv -r html,cli'
+                    }
                 }
             }
         }
@@ -45,7 +55,11 @@ pipeline {
 
     post {
         always {
-                bat "docker system prune -f"
+            script {
+                node {
+                    bat "docker system prune -f"
+                }
+            }
         }
         success {
             echo 'Build and deployment succeeded!'
