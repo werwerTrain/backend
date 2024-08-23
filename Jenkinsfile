@@ -1,6 +1,7 @@
 pipeline {
     agent any
 
+    tools {nodejs "nodejs"}
     environment {
         // 设置 Docker 镜像的标签
         BACKEND_IMAGE = "bush/backend:latest"
