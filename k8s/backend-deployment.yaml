@@ -16,5 +16,5 @@ spec:
       - name: backend
         image: luluplum/backend:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 80
 
