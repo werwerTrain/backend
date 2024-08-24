@@ -12,14 +12,6 @@ pipeline {
             }
         }
 
-        stage('Push Backend Image') {
-            steps {
-                script {
-                    // 推送后端 Docker 镜像到 Docker Registry
-                    bat 'docker push luluplum/backend:latest'
-                }
-            }
-        }
 
         stage('Deploy to Kubernetes') {
             steps {
