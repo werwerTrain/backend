@@ -8,6 +8,9 @@ pipeline {
     environment {
         // 设置 Docker 镜像的标签
         BACKEND_IMAGE = "luluplum/backend:latest"
+        DOCKER_CREDENTIALS_ID = '9b671c50-14d3-407d-9fe7-de0463e569d2'
+        DOCKER_PASSWORD = 'luluplum'
+        DOCKER_USERNAME = 'woaixuexi0326'
     }
     stages {
         stage('Checkout') {
@@ -21,6 +24,21 @@ pipeline {
                 script {
                     // 构建后端 Docker 镜像
                     sh 'docker build -t ${BACKEND_IMAGE} ./backend'
+                    sh 'docker run -d ${BACKEND_IMAGE}'
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    // 使用凭证登录 Docker 镜像仓库
+                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh '''
+                        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+                        docker push ${BACKEND_IMAGE}
+                        '''
+                    }
                 }
             }
         }
@@ -29,6 +47,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
+                    sh 'kubectl delete -f k8s/backend-service.yaml'
                     // 应用 Kubernetes 配置
                     sh 'kubectl apply -f k8s/backend-deployment.yaml'
                 }
