@@ -6,8 +6,13 @@ pipeline {
         stage('Build Backend') {
             steps {
                 script {
-                    // 构建后端 Docker 镜像
-                    bat 'docker build -t luluplum/backend:latest ./backend'
+                    // 清理原有镜像，构建后端 Docker 镜像
+                    bat '''
+                    docker stop backend
+                    docker rm backend
+                    docker rmi backend
+                    docker build -t backend ./backend
+                    '''
                 }
             }
         }
