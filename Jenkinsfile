@@ -18,7 +18,6 @@ pipeline {
                 git branch: 'luluplum', url: 'https://github.com/werwerTrain/backend.git'
             }
         }
-
         stage('Build Backend') {
             steps {
                 script {
