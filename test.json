@@ -1,0 +1,1680 @@
+{
+    "apifoxCli": "1.1.0",
+    "item": [
+        {
+            "item": [
+                {
+                    "id": "3d1bca9d-0140-45ab-90f8-7f51701f39c7",
+                    "name": "用户注册",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "port": "30001",
+                            "path": [
+                                "api",
+                                "register"
+                            ],
+                            "host": [
+                                "localhost"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "app/1.0.0"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "POST",
+                        "baseUrl": "http://localhost:30001/api",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": \"130112200001015678\",\n    \"name\": \"小红\",\n    \"password\": \"123123hhh\",\n    \"email\": \"123456@qq.com\",\n    \"time\": 2\n}",
+                            "generateMode": "normal",
+                            "type": "application/json"
+                        },
+                        "auth": {
+                            "type": "noauth",
+                            "noauth": []
+                        },
+                        "type": "http"
+                    },
+                    "response": [],
+                    "event": [],
+                    "responseDefinition": {
+                        "createdAt": "2024-05-28T12:50:45.108Z",
+                        "updatedAt": "2024-05-28T12:50:45.108Z",
+                        "name": "成功",
+                        "code": 200,
+                        "contentType": "json",
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "boolean",
+                                    "title": "是否成功",
+                                    "description": "成功为true，失败为false"
+                                },
+                                "reason": {
+                                    "type": "string",
+                                    "title": "失败原因",
+                                    "description": "result为false时显示失败的原因"
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "result",
+                                "reason"
+                            ],
+                            "required": [
+                                "result",
+                                "reason"
+                            ]
+                        },
+                        "defaultEnable": true,
+                        "projectId": 4458630,
+                        "ordering": 1,
+                        "apiDetailId": 174216373,
+                        "tempId": "1715692027235",
+                        "id": 451174713,
+                        "schemaDefinitions": {}
+                    },
+                    "requestDefinition": {
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "description": "ID 编号",
+                                    "mock": {
+                                        "mock": "@regexp(/[1-9]\\d{5}(18|19|20)\\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]/)"
+                                    }
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "time": {
+                                    "type": "integer",
+                                    "title": "第几次",
+                                    "description": "1 or 2"
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "id",
+                                "name",
+                                "password",
+                                "email",
+                                "time"
+                            ],
+                            "required": [
+                                "id",
+                                "name",
+                                "password",
+                                "email",
+                                "time"
+                            ]
+                        }
+                    },
+                    "metaInfo": {
+                        "httpApiId": 174216373,
+                        "httpApiCaseId": 188796583,
+                        "httpApiName": "用户注册",
+                        "httpApiPath": "/register",
+                        "httpApiMethod": "post",
+                        "httpApiCaseName": "用户注册",
+                        "id": "006adb9f-25bb-4932-aa98-f94c29a5deb9",
+                        "type": "http",
+                        "name": "用户注册",
+                        "relatedId": 4941080,
+                        "blockId": "006adb9f-25bb-4932-aa98-f94c29a5deb9"
+                    },
+                    "type": "http",
+                    "protocolProfileBehavior": {
+                        "useWhatWGUrlParser": false,
+                        "disableUrlEncoding": false,
+                        "disabledSystemHeaders": {},
+                        "disableCookies": false
+                    }
+                },
+                {
+                    "id": "d01726bb-bb95-4cf8-9c3d-7579886acc92",
+                    "name": "用户登录",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "port": "30001",
+                            "path": [
+                                "api",
+                                "login"
+                            ],
+                            "host": [
+                                "localhost"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "app/1.0.0"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "POST",
+                        "baseUrl": "http://localhost:30001/api",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": \"130112200001015678\",\n    \"password\": \"123123hhh\"\n}",
+                            "generateMode": "normal",
+                            "type": "application/json"
+                        },
+                        "auth": {
+                            "type": "noauth",
+                            "noauth": []
+                        },
+                        "type": "http"
+                    },
+                    "response": [],
+                    "event": [],
+                    "responseDefinition": {
+                        "createdAt": "2024-08-22T07:08:38.202Z",
+                        "updatedAt": "2024-08-22T07:08:38.202Z",
+                        "name": "成功",
+                        "code": 200,
+                        "contentType": "json",
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "boolean",
+                                    "title": "结果",
+                                    "description": "成功返回true，失败返回false"
+                                },
+                                "email": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ],
+                                    "title": "返回信息"
+                                },
+                                "name": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ],
+                                    "title": "返回昵称"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "title": "错误原因"
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "result",
+                                "email",
+                                "name",
+                                "message"
+                            ],
+                            "required": [
+                                "result",
+                                "message"
+                            ]
+                        },
+                        "defaultEnable": true,
+                        "projectId": 4458630,
+                        "ordering": 1,
+                        "apiDetailId": 174217057,
+                        "id": 451185234,
+                        "schemaDefinitions": {}
+                    },
+                    "requestDefinition": {
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "title": "用户id",
+                                    "description": "身份证号"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "title": "用户密码"
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "id",
+                                "password"
+                            ],
+                            "required": [
+                                "id",
+                                "password"
+                            ]
+                        }
+                    },
+                    "metaInfo": {
+                        "httpApiId": 174217057,
+                        "httpApiCaseId": 188796582,
+                        "httpApiName": "用户登录",
+                        "httpApiPath": "/login",
+                        "httpApiMethod": "post",
+                        "httpApiCaseName": "用户登录",
+                        "id": "55292988-a92e-4427-b4d7-d6b679fdbbce",
+                        "type": "http",
+                        "name": "用户登录",
+                        "relatedId": 4941080,
+                        "blockId": "55292988-a92e-4427-b4d7-d6b679fdbbce"
+                    },
+                    "type": "http",
+                    "protocolProfileBehavior": {
+                        "useWhatWGUrlParser": false,
+                        "disableUrlEncoding": false,
+                        "disabledSystemHeaders": {},
+                        "disableCookies": false
+                    }
+                },
+                {
+                    "id": "23d132d7-e4b5-41d0-a8d4-de0a2697dd52",
+                    "name": "用户信息",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "port": "30001",
+                            "path": [
+                                "api",
+                                "users",
+                                "130112200001015678"
+                            ],
+                            "host": [
+                                "localhost"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "string",
+                                    "value": "130112200001015678",
+                                    "key": "id"
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "app/1.0.0"
+                            }
+                        ],
+                        "method": "GET",
+                        "baseUrl": "http://localhost:30001/api",
+                        "body": {},
+                        "auth": {
+                            "type": "noauth",
+                            "noauth": []
+                        },
+                        "type": "http"
+                    },
+                    "response": [],
+                    "event": [],
+                    "responseDefinition": {
+                        "createdAt": "2024-05-19T06:27:42.198Z",
+                        "updatedAt": "2024-05-19T06:27:42.198Z",
+                        "name": "成功",
+                        "code": 200,
+                        "contentType": "json",
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "description": "用户ID 编号"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "用户名称"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "description": "注册邮箱"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "description": "密码"
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "id",
+                                "name",
+                                "email",
+                                "password"
+                            ],
+                            "required": [
+                                "id",
+                                "name",
+                                "email",
+                                "password"
+                            ]
+                        },
+                        "defaultEnable": true,
+                        "projectId": 4458630,
+                        "ordering": 1,
+                        "apiDetailId": 172303833,
+                        "tempId": "1715241578828",
+                        "id": 447378773,
+                        "schemaDefinitions": {}
+                    },
+                    "requestDefinition": {
+                        "jsonSchema": {}
+                    },
+                    "metaInfo": {
+                        "httpApiId": 172303833,
+                        "httpApiCaseId": 188796581,
+                        "httpApiName": "用户信息",
+                        "httpApiPath": "/users/{id}",
+                        "httpApiMethod": "get",
+                        "httpApiCaseName": "用户信息",
+                        "id": "07079648-b19b-4c96-8318-b67d14f69607",
+                        "type": "http",
+                        "name": "用户信息",
+                        "relatedId": 4941080,
+                        "blockId": "07079648-b19b-4c96-8318-b67d14f69607"
+                    },
+                    "type": "http",
+                    "protocolProfileBehavior": {
+                        "useWhatWGUrlParser": false,
+                        "disableUrlEncoding": false,
+                        "disabledSystemHeaders": {},
+                        "disableCookies": false
+                    }
+                },
+                {
+                    "id": "c96fcf57-6266-4794-8eb1-5281ac240a1d",
+                    "name": "更新密码",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "port": "30001",
+                            "path": [
+                                "api",
+                                "updatepassword"
+                            ],
+                            "host": [
+                                "localhost"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "app/1.0.0"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "POST",
+                        "baseUrl": "http://localhost:30001/api",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": \"130112200001015678\",\n    \"newpassword\": \"123123hhh\"\n}",
+                            "generateMode": "normal",
+                            "type": "application/json"
+                        },
+                        "auth": {
+                            "type": "noauth",
+                            "noauth": []
+                        },
+                        "type": "http"
+                    },
+                    "response": [],
+                    "event": [],
+                    "responseDefinition": {
+                        "createdAt": "2024-05-27T11:51:17.720Z",
+                        "updatedAt": "2024-05-27T11:51:17.720Z",
+                        "name": "成功",
+                        "code": 200,
+                        "contentType": "json",
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "boolean",
+                                    "title": "是否更新成功"
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "result"
+                            ],
+                            "required": [
+                                "result"
+                            ]
+                        },
+                        "defaultEnable": true,
+                        "projectId": 4458630,
+                        "ordering": 1,
+                        "apiDetailId": 177345294,
+                        "tempId": "1716473308523",
+                        "id": 457333964,
+                        "schemaDefinitions": {}
+                    },
+                    "requestDefinition": {
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "newpassword": {
+                                    "type": "string",
+                                    "title": "新密码"
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "id",
+                                "newpassword"
+                            ],
+                            "required": [
+                                "id",
+                                "newpassword"
+                            ]
+                        }
+                    },
+                    "metaInfo": {
+                        "httpApiId": 177345294,
+                        "httpApiCaseId": 188796580,
+                        "httpApiName": "更新密码",
+                        "httpApiPath": "/updatepassword",
+                        "httpApiMethod": "post",
+                        "httpApiCaseName": "更新密码",
+                        "id": "c5f669f2-377a-4d09-badb-02de77c4e64d",
+                        "type": "http",
+                        "name": "更新密码",
+                        "relatedId": 4941080,
+                        "blockId": "c5f669f2-377a-4d09-badb-02de77c4e64d"
+                    },
+                    "type": "http",
+                    "protocolProfileBehavior": {
+                        "useWhatWGUrlParser": false,
+                        "disableUrlEncoding": false,
+                        "disabledSystemHeaders": {},
+                        "disableCookies": false
+                    }
+                },
+                {
+                    "id": "57f9c09d-50bf-4119-a2b9-067cf10fb86f",
+                    "name": "根据账号获取验证码",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "port": "30001",
+                            "path": [
+                                "api",
+                                "getbackPassword",
+                                "130112200001015678"
+                            ],
+                            "host": [
+                                "localhost"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "string",
+                                    "value": "130112200001015678",
+                                    "key": "id"
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "app/1.0.0"
+                            }
+                        ],
+                        "method": "GET",
+                        "baseUrl": "http://localhost:30001/api",
+                        "body": {},
+                        "auth": {
+                            "type": "noauth",
+                            "noauth": []
+                        },
+                        "type": "http"
+                    },
+                    "response": [],
+                    "event": [],
+                    "responseDefinition": {
+                        "createdAt": "2024-05-31T07:20:43.736Z",
+                        "updatedAt": "2024-05-31T07:20:43.736Z",
+                        "name": "成功",
+                        "code": 200,
+                        "contentType": "json",
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "boolean",
+                                    "title": "是否成功"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "title": "失败原因",
+                                    "description": "若失败，返回失败原因，包括：身份证号格式错误，未注册"
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "result",
+                                "message"
+                            ],
+                            "required": [
+                                "result",
+                                "message"
+                            ]
+                        },
+                        "defaultEnable": true,
+                        "projectId": 4458630,
+                        "ordering": 1,
+                        "apiDetailId": 179871641,
+                        "tempId": "1717139304762",
+                        "id": 462260402,
+                        "schemaDefinitions": {}
+                    },
+                    "requestDefinition": {
+                        "jsonSchema": {}
+                    },
+                    "metaInfo": {
+                        "httpApiId": 179871641,
+                        "httpApiCaseId": 188796579,
+                        "httpApiName": "根据账号获取验证码",
+                        "httpApiPath": "/getbackPassword/{id}",
+                        "httpApiMethod": "get",
+                        "httpApiCaseName": "根据账号获取验证码",
+                        "id": "77fc564d-9e56-4ace-aac4-8f24984a2478",
+                        "type": "http",
+                        "name": "根据账号获取验证码",
+                        "relatedId": 4941080,
+                        "blockId": "77fc564d-9e56-4ace-aac4-8f24984a2478"
+                    },
+                    "type": "http",
+                    "protocolProfileBehavior": {
+                        "useWhatWGUrlParser": false,
+                        "disableUrlEncoding": false,
+                        "disabledSystemHeaders": {},
+                        "disableCookies": false
+                    }
+                },
+                {
+                    "id": "0e9f9e91-38c5-49a5-b1bb-a39aaa49f9c5",
+                    "name": "乘车人信息",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "port": "30001",
+                            "path": [
+                                "api",
+                                "passengersInfo",
+                                "130112200001015678"
+                            ],
+                            "host": [
+                                "localhost"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "string",
+                                    "value": "130112200001015678",
+                                    "key": "id"
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "app/1.0.0"
+                            }
+                        ],
+                        "method": "POST",
+                        "baseUrl": "http://localhost:30001/api",
+                        "body": {},
+                        "auth": {
+                            "type": "noauth",
+                            "noauth": []
+                        },
+                        "type": "http"
+                    },
+                    "response": [],
+                    "event": [],
+                    "responseDefinition": {
+                        "createdAt": "2024-08-22T03:44:43.184Z",
+                        "updatedAt": "2024-08-22T03:44:43.184Z",
+                        "name": "成功",
+                        "code": 200,
+                        "contentType": "json",
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "passenger": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "title": "姓名",
+                                                "mock": {
+                                                    "mock": "@cname"
+                                                }
+                                            },
+                                            "phone": {
+                                                "type": "string",
+                                                "title": "电话",
+                                                "mock": {
+                                                    "mock": "@phone"
+                                                }
+                                            },
+                                            "identification": {
+                                                "type": "string",
+                                                "title": "身份证号",
+                                                "mock": {
+                                                    "mock": "@regexp(/[1-9]\\d{5}(18|19|20)\\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]/)"
+                                                }
+                                            }
+                                        },
+                                        "description": "一个乘客的信息",
+                                        "x-apifox-orders": [
+                                            "name",
+                                            "identification",
+                                            "phone"
+                                        ],
+                                        "required": [
+                                            "name",
+                                            "identification",
+                                            "phone"
+                                        ],
+                                        "minProperties": 3
+                                    },
+                                    "minItems": 1
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "passenger"
+                            ],
+                            "required": [
+                                "passenger"
+                            ]
+                        },
+                        "defaultEnable": true,
+                        "projectId": 4458630,
+                        "ordering": 1,
+                        "apiDetailId": 175446948,
+                        "id": 453643712,
+                        "schemaDefinitions": {}
+                    },
+                    "requestDefinition": {
+                        "jsonSchema": {}
+                    },
+                    "metaInfo": {
+                        "httpApiId": 175446948,
+                        "httpApiCaseId": 188796578,
+                        "httpApiName": "乘车人信息",
+                        "httpApiPath": "/passengersInfo/{id}",
+                        "httpApiMethod": "post",
+                        "httpApiCaseName": "乘车人信息",
+                        "id": "97223fae-6ef4-48c8-a8ed-8b01f355db11",
+                        "type": "http",
+                        "name": "乘车人信息",
+                        "relatedId": 4941080,
+                        "blockId": "97223fae-6ef4-48c8-a8ed-8b01f355db11"
+                    },
+                    "type": "http",
+                    "protocolProfileBehavior": {
+                        "useWhatWGUrlParser": false,
+                        "disableUrlEncoding": false,
+                        "disabledSystemHeaders": {},
+                        "disableCookies": false
+                    }
+                },
+                {
+                    "id": "c71f285e-403b-4a71-944f-4ec073f03eca",
+                    "name": "新增乘车人",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "port": "30001",
+                            "path": [
+                                "api",
+                                "insertPassengers",
+                                "130112200001015678"
+                            ],
+                            "host": [
+                                "localhost"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": false,
+                                    "key": "name",
+                                    "value": "小红1"
+                                },
+                                {
+                                    "disabled": false,
+                                    "key": "identification",
+                                    "value": "120112200001015678"
+                                },
+                                {
+                                    "disabled": false,
+                                    "key": "phone",
+                                    "value": "xiaohong1@qq.com"
+                                }
+                            ],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "string",
+                                    "value": "130112200001015678",
+                                    "key": "id"
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "app/1.0.0"
+                            }
+                        ],
+                        "method": "POST",
+                        "baseUrl": "http://localhost:30001/api",
+                        "body": {},
+                        "auth": {
+                            "type": "noauth",
+                            "noauth": []
+                        },
+                        "type": "http"
+                    },
+                    "response": [],
+                    "event": [],
+                    "responseDefinition": {
+                        "createdAt": "2024-05-19T17:32:44.360Z",
+                        "updatedAt": "2024-05-19T17:32:44.360Z",
+                        "name": "成功",
+                        "code": 200,
+                        "contentType": "json",
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "info": {
+                                    "type": "boolean",
+                                    "mock": {
+                                        "mock": "@boolean(true)"
+                                    },
+                                    "title": "是否新建成功"
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "info"
+                            ],
+                            "required": [
+                                "info"
+                            ]
+                        },
+                        "defaultEnable": true,
+                        "projectId": 4458630,
+                        "ordering": 1,
+                        "apiDetailId": 175469759,
+                        "tempId": "1715953788262",
+                        "id": 453690782,
+                        "schemaDefinitions": {}
+                    },
+                    "requestDefinition": {
+                        "jsonSchema": {}
+                    },
+                    "metaInfo": {
+                        "httpApiId": 175469759,
+                        "httpApiCaseId": 188796577,
+                        "httpApiName": "新增乘车人",
+                        "httpApiPath": "/insertPassengers/{id}",
+                        "httpApiMethod": "post",
+                        "httpApiCaseName": "新增乘车人",
+                        "id": "018030c9-89c6-4847-9778-c27651520e0d",
+                        "type": "http",
+                        "name": "新增乘车人",
+                        "relatedId": 4941080,
+                        "blockId": "018030c9-89c6-4847-9778-c27651520e0d"
+                    },
+                    "type": "http",
+                    "protocolProfileBehavior": {
+                        "useWhatWGUrlParser": false,
+                        "disableUrlEncoding": false,
+                        "disabledSystemHeaders": {},
+                        "disableCookies": false
+                    }
+                },
+                {
+                    "id": "ce1d0773-ccfe-4984-bb53-43cee7ee1f51",
+                    "name": "新增乘车人",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "port": "30001",
+                            "path": [
+                                "api",
+                                "insertPassengers",
+                                "130112200001015678"
+                            ],
+                            "host": [
+                                "localhost"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": false,
+                                    "key": "name",
+                                    "value": "小红2"
+                                },
+                                {
+                                    "disabled": false,
+                                    "key": "identification",
+                                    "value": "140112200001015678"
+                                },
+                                {
+                                    "disabled": false,
+                                    "key": "phone",
+                                    "value": "xiaohong2@qq.com"
+                                }
+                            ],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "string",
+                                    "value": "130112200001015678",
+                                    "key": "id"
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "app/1.0.0"
+                            }
+                        ],
+                        "method": "POST",
+                        "baseUrl": "http://localhost:30001/api",
+                        "body": {},
+                        "auth": {
+                            "type": "noauth",
+                            "noauth": []
+                        },
+                        "type": "http"
+                    },
+                    "response": [],
+                    "event": [],
+                    "responseDefinition": {
+                        "createdAt": "2024-05-19T17:32:44.360Z",
+                        "updatedAt": "2024-05-19T17:32:44.360Z",
+                        "name": "成功",
+                        "code": 200,
+                        "contentType": "json",
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "info": {
+                                    "type": "boolean",
+                                    "mock": {
+                                        "mock": "@boolean(true)"
+                                    },
+                                    "title": "是否新建成功"
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "info"
+                            ],
+                            "required": [
+                                "info"
+                            ]
+                        },
+                        "defaultEnable": true,
+                        "projectId": 4458630,
+                        "ordering": 1,
+                        "apiDetailId": 175469759,
+                        "tempId": "1715953788262",
+                        "id": 453690782,
+                        "schemaDefinitions": {}
+                    },
+                    "requestDefinition": {
+                        "jsonSchema": {}
+                    },
+                    "metaInfo": {
+                        "httpApiId": 175469759,
+                        "httpApiCaseId": 188796610,
+                        "httpApiName": "新增乘车人",
+                        "httpApiPath": "/insertPassengers/{id}",
+                        "httpApiMethod": "post",
+                        "httpApiCaseName": "新增乘车人",
+                        "id": "02d57871-b3e9-4688-b100-436d4a98f053",
+                        "type": "http",
+                        "name": "新增乘车人",
+                        "relatedId": 4941080,
+                        "blockId": "02d57871-b3e9-4688-b100-436d4a98f053"
+                    },
+                    "type": "http",
+                    "protocolProfileBehavior": {
+                        "useWhatWGUrlParser": false,
+                        "disableUrlEncoding": false,
+                        "disabledSystemHeaders": {},
+                        "disableCookies": false
+                    }
+                },
+                {
+                    "id": "2838fed5-2842-41b1-b96d-f6979c9d1ada",
+                    "name": "乘车人信息",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "port": "30001",
+                            "path": [
+                                "api",
+                                "passengersInfo",
+                                "130112200001015678"
+                            ],
+                            "host": [
+                                "localhost"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "string",
+                                    "value": "130112200001015678",
+                                    "key": "id"
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "app/1.0.0"
+                            }
+                        ],
+                        "method": "POST",
+                        "baseUrl": "http://localhost:30001/api",
+                        "body": {},
+                        "auth": {
+                            "type": "noauth",
+                            "noauth": []
+                        },
+                        "type": "http"
+                    },
+                    "response": [],
+                    "event": [],
+                    "responseDefinition": {
+                        "createdAt": "2024-08-22T03:44:43.184Z",
+                        "updatedAt": "2024-08-22T03:44:43.184Z",
+                        "name": "成功",
+                        "code": 200,
+                        "contentType": "json",
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "passenger": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "title": "姓名",
+                                                "mock": {
+                                                    "mock": "@cname"
+                                                }
+                                            },
+                                            "phone": {
+                                                "type": "string",
+                                                "title": "电话",
+                                                "mock": {
+                                                    "mock": "@phone"
+                                                }
+                                            },
+                                            "identification": {
+                                                "type": "string",
+                                                "title": "身份证号",
+                                                "mock": {
+                                                    "mock": "@regexp(/[1-9]\\d{5}(18|19|20)\\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]/)"
+                                                }
+                                            }
+                                        },
+                                        "description": "一个乘客的信息",
+                                        "x-apifox-orders": [
+                                            "name",
+                                            "identification",
+                                            "phone"
+                                        ],
+                                        "required": [
+                                            "name",
+                                            "identification",
+                                            "phone"
+                                        ],
+                                        "minProperties": 3
+                                    },
+                                    "minItems": 1
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "passenger"
+                            ],
+                            "required": [
+                                "passenger"
+                            ]
+                        },
+                        "defaultEnable": true,
+                        "projectId": 4458630,
+                        "ordering": 1,
+                        "apiDetailId": 175446948,
+                        "id": 453643712,
+                        "schemaDefinitions": {}
+                    },
+                    "requestDefinition": {
+                        "jsonSchema": {}
+                    },
+                    "metaInfo": {
+                        "httpApiId": 175446948,
+                        "httpApiCaseId": 188796644,
+                        "httpApiName": "乘车人信息",
+                        "httpApiPath": "/passengersInfo/{id}",
+                        "httpApiMethod": "post",
+                        "httpApiCaseName": "乘车人信息",
+                        "id": "353d8459-696d-42f0-9ce1-6599010a98cb",
+                        "type": "http",
+                        "name": "乘车人信息",
+                        "relatedId": 4941080,
+                        "blockId": "353d8459-696d-42f0-9ce1-6599010a98cb"
+                    },
+                    "type": "http",
+                    "protocolProfileBehavior": {
+                        "useWhatWGUrlParser": false,
+                        "disableUrlEncoding": false,
+                        "disabledSystemHeaders": {},
+                        "disableCookies": false
+                    }
+                },
+                {
+                    "id": "e990ccdb-2c10-41a6-be17-bfb48cfcbaec",
+                    "name": "更新乘车人信息",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "port": "30001",
+                            "path": [
+                                "api",
+                                "updatePassengers",
+                                "130112200001015678"
+                            ],
+                            "host": [
+                                "localhost"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": false,
+                                    "key": "oldidentification",
+                                    "value": "140112200001015678"
+                                },
+                                {
+                                    "disabled": false,
+                                    "key": "newname",
+                                    "value": "更改名字"
+                                },
+                                {
+                                    "disabled": false,
+                                    "key": "newidentification",
+                                    "value": ""
+                                },
+                                {
+                                    "disabled": false,
+                                    "key": "newphone"
+                                }
+                            ],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "string",
+                                    "value": "130112200001015678",
+                                    "key": "id"
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "app/1.0.0"
+                            }
+                        ],
+                        "method": "POST",
+                        "baseUrl": "http://localhost:30001/api",
+                        "body": {},
+                        "auth": {
+                            "type": "noauth",
+                            "noauth": []
+                        },
+                        "type": "http"
+                    },
+                    "response": [],
+                    "event": [],
+                    "responseDefinition": {
+                        "createdAt": "2024-05-21T04:15:23.546Z",
+                        "updatedAt": "2024-05-21T04:15:23.546Z",
+                        "name": "成功",
+                        "code": 200,
+                        "contentType": "json",
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "info": {
+                                    "type": "boolean",
+                                    "mock": {
+                                        "mock": "@boolean(true)"
+                                    },
+                                    "title": "返回更新是否成功"
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "info"
+                            ],
+                            "required": [
+                                "info"
+                            ]
+                        },
+                        "defaultEnable": true,
+                        "projectId": 4458630,
+                        "ordering": 1,
+                        "apiDetailId": 175468896,
+                        "tempId": "1715952866658",
+                        "id": 453687493,
+                        "schemaDefinitions": {}
+                    },
+                    "requestDefinition": {
+                        "jsonSchema": {}
+                    },
+                    "metaInfo": {
+                        "httpApiId": 175468896,
+                        "httpApiCaseId": 188796666,
+                        "httpApiName": "更新乘车人信息",
+                        "httpApiPath": "/updatePassengers/{id}",
+                        "httpApiMethod": "post",
+                        "httpApiCaseName": "更新乘车人信息",
+                        "id": "d1b5236e-0766-4c46-8813-41670347b68a",
+                        "type": "http",
+                        "name": "更新乘车人信息",
+                        "relatedId": 4941080,
+                        "blockId": "d1b5236e-0766-4c46-8813-41670347b68a"
+                    },
+                    "type": "http",
+                    "protocolProfileBehavior": {
+                        "useWhatWGUrlParser": false,
+                        "disableUrlEncoding": false,
+                        "disabledSystemHeaders": {},
+                        "disableCookies": false
+                    }
+                },
+                {
+                    "id": "ee3d6a1e-8dec-483d-8630-bffd1af1fb8b",
+                    "name": "乘车人信息",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "port": "30001",
+                            "path": [
+                                "api",
+                                "passengersInfo",
+                                "130112200001015678"
+                            ],
+                            "host": [
+                                "localhost"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "string",
+                                    "value": "130112200001015678",
+                                    "key": "id"
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "app/1.0.0"
+                            }
+                        ],
+                        "method": "POST",
+                        "baseUrl": "http://localhost:30001/api",
+                        "body": {},
+                        "auth": {
+                            "type": "noauth",
+                            "noauth": []
+                        },
+                        "type": "http"
+                    },
+                    "response": [],
+                    "event": [],
+                    "responseDefinition": {
+                        "createdAt": "2024-08-22T03:44:43.184Z",
+                        "updatedAt": "2024-08-22T03:44:43.184Z",
+                        "name": "成功",
+                        "code": 200,
+                        "contentType": "json",
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "passenger": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "title": "姓名",
+                                                "mock": {
+                                                    "mock": "@cname"
+                                                }
+                                            },
+                                            "phone": {
+                                                "type": "string",
+                                                "title": "电话",
+                                                "mock": {
+                                                    "mock": "@phone"
+                                                }
+                                            },
+                                            "identification": {
+                                                "type": "string",
+                                                "title": "身份证号",
+                                                "mock": {
+                                                    "mock": "@regexp(/[1-9]\\d{5}(18|19|20)\\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]/)"
+                                                }
+                                            }
+                                        },
+                                        "description": "一个乘客的信息",
+                                        "x-apifox-orders": [
+                                            "name",
+                                            "identification",
+                                            "phone"
+                                        ],
+                                        "required": [
+                                            "name",
+                                            "identification",
+                                            "phone"
+                                        ],
+                                        "minProperties": 3
+                                    },
+                                    "minItems": 1
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "passenger"
+                            ],
+                            "required": [
+                                "passenger"
+                            ]
+                        },
+                        "defaultEnable": true,
+                        "projectId": 4458630,
+                        "ordering": 1,
+                        "apiDetailId": 175446948,
+                        "id": 453643712,
+                        "schemaDefinitions": {}
+                    },
+                    "requestDefinition": {
+                        "jsonSchema": {}
+                    },
+                    "metaInfo": {
+                        "httpApiId": 175446948,
+                        "httpApiCaseId": 188796665,
+                        "httpApiName": "乘车人信息",
+                        "httpApiPath": "/passengersInfo/{id}",
+                        "httpApiMethod": "post",
+                        "httpApiCaseName": "乘车人信息",
+                        "id": "d462b76b-0a1f-4b2b-bdb7-d7081d4a457f",
+                        "type": "http",
+                        "name": "乘车人信息",
+                        "relatedId": 4941080,
+                        "blockId": "d462b76b-0a1f-4b2b-bdb7-d7081d4a457f"
+                    },
+                    "type": "http",
+                    "protocolProfileBehavior": {
+                        "useWhatWGUrlParser": false,
+                        "disableUrlEncoding": false,
+                        "disabledSystemHeaders": {},
+                        "disableCookies": false
+                    }
+                },
+                {
+                    "id": "92ac6319-f430-4619-ad53-4a6e6be17b80",
+                    "name": "删除乘车人",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "port": "30001",
+                            "path": [
+                                "api",
+                                "deletePassengers",
+                                "130112200001015678"
+                            ],
+                            "host": [
+                                "localhost"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": false,
+                                    "key": "name",
+                                    "value": "小红1"
+                                },
+                                {
+                                    "disabled": false,
+                                    "key": "identification",
+                                    "value": "120112200001015678"
+                                }
+                            ],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "string",
+                                    "value": "130112200001015678",
+                                    "key": "id"
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "app/1.0.0"
+                            }
+                        ],
+                        "method": "POST",
+                        "baseUrl": "http://localhost:30001/api",
+                        "body": {},
+                        "auth": {
+                            "type": "noauth",
+                            "noauth": []
+                        },
+                        "type": "http"
+                    },
+                    "response": [],
+                    "event": [],
+                    "responseDefinition": {
+                        "createdAt": "2024-05-28T13:22:00.029Z",
+                        "updatedAt": "2024-05-28T13:22:00.029Z",
+                        "name": "成功",
+                        "code": 200,
+                        "contentType": "json",
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "info": {
+                                    "type": "boolean",
+                                    "title": "删除是否成功",
+                                    "default": "true",
+                                    "mock": {
+                                        "mock": "@boolean(true)"
+                                    }
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "info"
+                            ],
+                            "required": [
+                                "info"
+                            ]
+                        },
+                        "defaultEnable": true,
+                        "projectId": 4458630,
+                        "ordering": 1,
+                        "apiDetailId": 175460600,
+                        "tempId": "1715948465432",
+                        "id": 453673460,
+                        "schemaDefinitions": {}
+                    },
+                    "requestDefinition": {
+                        "jsonSchema": {}
+                    },
+                    "metaInfo": {
+                        "httpApiId": 175460600,
+                        "httpApiCaseId": 188796683,
+                        "httpApiName": "删除乘车人",
+                        "httpApiPath": "/deletePassengers/{id}",
+                        "httpApiMethod": "post",
+                        "httpApiCaseName": "删除乘车人",
+                        "id": "0e269f9a-a912-4ead-ac9d-35fd5b0c2823",
+                        "type": "http",
+                        "name": "删除乘车人",
+                        "relatedId": 4941080,
+                        "blockId": "0e269f9a-a912-4ead-ac9d-35fd5b0c2823"
+                    },
+                    "type": "http",
+                    "protocolProfileBehavior": {
+                        "useWhatWGUrlParser": false,
+                        "disableUrlEncoding": false,
+                        "disabledSystemHeaders": {},
+                        "disableCookies": false
+                    }
+                },
+                {
+                    "id": "fd27b821-f171-4dd9-9a4b-59bd3ada4812",
+                    "name": "乘车人信息",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "port": "30001",
+                            "path": [
+                                "api",
+                                "passengersInfo",
+                                "130112200001015678"
+                            ],
+                            "host": [
+                                "localhost"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "string",
+                                    "value": "130112200001015678",
+                                    "key": "id"
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "User-Agent",
+                                "value": "app/1.0.0"
+                            }
+                        ],
+                        "method": "POST",
+                        "baseUrl": "http://localhost:30001/api",
+                        "body": {},
+                        "auth": {
+                            "type": "noauth",
+                            "noauth": []
+                        },
+                        "type": "http"
+                    },
+                    "response": [],
+                    "event": [],
+                    "responseDefinition": {
+                        "createdAt": "2024-08-22T03:44:43.184Z",
+                        "updatedAt": "2024-08-22T03:44:43.184Z",
+                        "name": "成功",
+                        "code": 200,
+                        "contentType": "json",
+                        "jsonSchema": {
+                            "type": "object",
+                            "properties": {
+                                "passenger": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "title": "姓名",
+                                                "mock": {
+                                                    "mock": "@cname"
+                                                }
+                                            },
+                                            "phone": {
+                                                "type": "string",
+                                                "title": "电话",
+                                                "mock": {
+                                                    "mock": "@phone"
+                                                }
+                                            },
+                                            "identification": {
+                                                "type": "string",
+                                                "title": "身份证号",
+                                                "mock": {
+                                                    "mock": "@regexp(/[1-9]\\d{5}(18|19|20)\\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]/)"
+                                                }
+                                            }
+                                        },
+                                        "description": "一个乘客的信息",
+                                        "x-apifox-orders": [
+                                            "name",
+                                            "identification",
+                                            "phone"
+                                        ],
+                                        "required": [
+                                            "name",
+                                            "identification",
+                                            "phone"
+                                        ],
+                                        "minProperties": 3
+                                    },
+                                    "minItems": 1
+                                }
+                            },
+                            "x-apifox-orders": [
+                                "passenger"
+                            ],
+                            "required": [
+                                "passenger"
+                            ]
+                        },
+                        "defaultEnable": true,
+                        "projectId": 4458630,
+                        "ordering": 1,
+                        "apiDetailId": 175446948,
+                        "id": 453643712,
+                        "schemaDefinitions": {}
+                    },
+                    "requestDefinition": {
+                        "jsonSchema": {}
+                    },
+                    "metaInfo": {
+                        "httpApiId": 175446948,
+                        "httpApiCaseId": 188796682,
+                        "httpApiName": "乘车人信息",
+                        "httpApiPath": "/passengersInfo/{id}",
+                        "httpApiMethod": "post",
+                        "httpApiCaseName": "乘车人信息",
+                        "id": "41cb8f5e-cf9d-42e0-9982-f85b82c8c9f9",
+                        "type": "http",
+                        "name": "乘车人信息",
+                        "relatedId": 4941080,
+                        "blockId": "41cb8f5e-cf9d-42e0-9982-f85b82c8c9f9"
+                    },
+                    "type": "http",
+                    "protocolProfileBehavior": {
+                        "useWhatWGUrlParser": false,
+                        "disableUrlEncoding": false,
+                        "disabledSystemHeaders": {},
+                        "disableCookies": false
+                    }
+                }
+            ],
+            "name": "用户+乘车人"
+        }
+    ],
+    "info": {
+        "name": "用户+乘车人"
+    },
+    "dataSchemas": {},
+    "mockRules": {
+        "rules": [],
+        "enableSystemRule": true
+    },
+    "environment": {
+        "id": 20531311,
+        "name": "测试环境",
+        "baseUrl": "http://localhost:30001/api",
+        "baseUrls": {
+            "default": "http://localhost:30001/api"
+        },
+        "variable": {
+            "id": "efc77b39-e417-477f-a794-74e49aa5bcf6",
+            "name": "测试环境",
+            "values": []
+        },
+        "type": "normal",
+        "parameter": {
+            "header": [],
+            "query": [],
+            "body": [],
+            "cookie": []
+        }
+    },
+    "globals": {
+        "baseUrl": "",
+        "baseUrls": {},
+        "variable": {
+            "id": "495519bf-cbce-48fa-8403-f05d96813b1b",
+            "values": []
+        },
+        "parameter": {
+            "header": [],
+            "query": [],
+            "body": [],
+            "cookie": []
+        }
+    },
+    "isServerBuild": true,
+    "isTestFlowControl": false,
+    "projectOptions": {
+        "responseValidate": true,
+        "enableJsonc": false,
+        "isDefaultUrlEncoding": 2,
+        "enableBigint": false,
+        "request2": true,
+        "preferredHttpVersion": {
+            "https": "HTTP/1",
+            "http": "HTTP/1"
+        },
+        "enableTestScenarioSetting": false,
+        "enableYAPICompatScript": false,
+        "mockSettings": {}
+    },
+    "ciRunningOptions": {
+        "environmentId": 20531311,
+        "useDataSetId": -1,
+        "iterationCount": 1,
+        "delayItem": 0
+    },
+    "reportUrlTemplate": "https://app.apifox.com/link/project/{{projectId}}/api-test/test-report/{{id}}",
+    "reportExtra": {
+        "refScopes": [],
+        "runOptions": {
+            "environmentId": 20531311,
+            "useDataSetId": -1,
+            "iterationCount": 1,
+            "delayItem": 0
+        }
+    }
+}
