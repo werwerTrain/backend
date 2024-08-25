@@ -21,9 +21,26 @@ pipeline {
         stage('Build Backend') {
             steps {
                 script {
-                    // 构建后端 Docker 镜像
+                    // 查找并停止旧的容器
+                    sh '''
+                    CONTAINERS=$(docker ps -q --filter "ancestor=${BACKEND_IMAGE}")
+                    if [ -n "$CONTAINERS" ]; then
+                        docker stop $CONTAINERS
+                    fi
+                    '''
+            
+                    // 删除停止的容器
+                    sh '''
+                    CONTAINERS=$(docker ps -a -q --filter "ancestor=${BACKEND_IMAGE}")
+                    if [ -n "$CONTAINERS" ]; then
+                        docker rm $CONTAINERS
+                    fi
+                    '''
+                    sh '''
+                    docker rmi -f ${BACKEND_IMAGE} || true
+                    '''
+                    // 构建前端 Docker 镜像
                     sh 'docker build -t ${BACKEND_IMAGE} ./backend'
-                    sh 'docker run -d ${BACKEND_IMAGE}'
                 }
             }
         }
@@ -47,7 +64,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    sh 'kubectl delete -f k8s/backend-service.yaml'
+                    sh 'kubectl delete -f k8s/backend-deployment.yaml'
                     // 应用 Kubernetes 配置
                     sh 'kubectl apply -f k8s/backend-deployment.yaml'
                 }
