@@ -32,7 +32,7 @@ pipeline {
                 script {
                     // 使用凭证登录 Docker 镜像仓库
                     withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                        powershell '''
+                        bat '''
                         echo $env:DOCKER_PASSWORD | docker login -u $env:DOCKER_USERNAME --password-stdin
                         docker push backend
                         '''
