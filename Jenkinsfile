@@ -13,7 +13,7 @@ pipeline {
         DOCKER_USERNAME = 'woaixuexi0326'
     }
     stages {
-        stage('Checkout') {
+        
         stage('Checkout') {
             steps {
                 git branch: 'luluplum', url: 'https://github.com/werwerTrain/backend.git'
