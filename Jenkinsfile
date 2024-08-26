@@ -1,6 +1,13 @@
 pipeline {
     agent any
-
+    
+    environment {
+        // 设置 Docker 镜像的标签
+        DOCKER_CREDENTIALS_ID = 'dockerhub'
+        DOCKER_PASSWORD = '20050121Rabbit'
+        DOCKER_USERNAME = 'qiuer0121'
+    }
+    
     stages {
         stage('Checkout') {
             steps {
@@ -19,6 +26,21 @@ pipeline {
                 }
             }
         }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    // 使用凭证登录 Docker 镜像仓库
+                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        powershell '''
+                        echo $env:DOCKER_PASSWORD | docker login -u $env:DOCKER_USERNAME --password-stdin
+                        docker push backend
+                        '''
+                    }
+                }
+            }
+        }
+
 
         stage('Deploy to Kubernetes') {
             steps {
