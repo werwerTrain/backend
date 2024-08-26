@@ -8,15 +8,15 @@
 
     <select id="getTrainRelatedFoodOrders">
         select *
-        from orders where oid in (
-            select f.oid
-                from foodOrders f
-                where (f.trainId, f.trainDate) in (
-                    select t.trainId, t.trainDate
-                    from trainorders t
-                             join orders o on o.oid = t.oid
-                    where t.trainId = #{tid} and t.trainDate = #{date} and o.uid = #{uid}
-                )
+        from orders o
+        where o.uid = #{uid}
+          and exists(
+            select *
+            from foodOrders f
+            join trainorders t on f.trainId = t.trainId and f.trainDate = t.trainDate
+            where f.oid = o.oid
+            and t.trainDate = #{date}
+            and t.trainId = #{tid}
             )
     </select>
 </mapper>
