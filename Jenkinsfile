@@ -83,7 +83,7 @@ pipeline {
         }
         stage('Running Test Scenario') {
             steps {
-                sh 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/455356/detail?token=x2C6Vwo_z_3y7AgthT-tBL -r html,cli'
+                sh 'apifox run ./test.json -r cli,html'
             }
         }
 
