@@ -5,7 +5,9 @@ pipeline {
         // 设置 Docker 镜像的标签
         BACKEND_IMAGE = "3181577132/backend:latest"
         KUBECONFIG = credentials('kubectl_id')
-        // DOCKER_CREDENTIALS_ID = "361fae32-8683-4422-8312-c1e80b9dceed" // Jenkins 中 Docker Hub 凭据的 ID
+        DOCKER_CREDENTIALS_ID = "d5402ec3-f900-4767-94b2-bea019b24060" // Jenkins 中 Docker Hub 凭据的 ID
+        // DOCKER_USERNAME = "3181577132"
+        // DOCKER_PASSWORD = ""
     }
 
     stages {
@@ -21,9 +23,33 @@ pipeline {
         //     }
         // }
 
+        tage('Checkout') {
+            steps {
+                git branch: 'candy', url: 'https://github.com/werwerTrain/backend.git'
+            }
+        }
+
         stage('Build Backend') {
             steps {
                 script {
+                    // 查找并停止旧的容器
+                    bat "
+                    CONTAINERS=$(docker ps -q --filter "ancestor=${BACKEND_IMAGE}")
+                    if [ -n "$CONTAINERS" ]; then
+                        docker stop $CONTAINERS
+                    fi"
+
+                    // 删除停止的容器
+                    bat "
+                    CONTAINERS=$(docker ps -a -q --filter "ancestor=${BACKEND_IMAGE}")
+                    if [ -n "$CONTAINERS" ]; then
+                        docker rm $CONTAINERS
+                    fi
+                    "
+
+                    bat "
+                    docker rmi -f ${BACKEND_IMAGE} || true
+                    "
                     // 构建后端 Docker 镜像
                     bat "docker build -t ${BACKEND_IMAGE} ./backend"
                 }
@@ -34,7 +60,13 @@ pipeline {
             steps {
                 script {
                     // 推送后端 Docker 镜像到 Docker Registry
-                    bat "docker push ${BACKEND_IMAGE}"
+                    // 使用凭证登录 Docker 镜像仓库
+                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID)]) {
+                        bat "
+                        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+                        docker push ${BACKEND_IMAGE}
+                        "
+                    }
                 }
             }
         }
@@ -43,6 +75,7 @@ pipeline {
             steps {
                 script {
                     // 应用 Kubernetes 配置
+                    bat "kubectl delete -f k8s/backend-deployment.yaml"
                     bat "kubectl apply -f k8s/backend-deployment.yaml"
                 }
             }
