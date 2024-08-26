@@ -331,10 +331,14 @@ public class TrainController {
         };
 
         List<Map<String, Object>> result = new ArrayList<>();
-        orders.forEach(order -> {
+        for(Order order: orders) {
             HashMap<String, Object> map = new HashMap<>();
             String oid = order.getOid();
             List<TrainOrder> trainOrders = trainService.getTrainOrdersByOid(oid);
+
+            if (trainOrders.isEmpty()) {
+                continue;
+            }
             String tid = trainOrders.get(0).getTrainId();
             String date = trainOrders.get(0).getTrainDate();
             Train train = trainService.getTrainByTidAndDate(tid, date);
@@ -368,7 +372,7 @@ public class TrainController {
 
             map.put("person", person);
             result.add(map);
-        });
+        }
 
         // 创建一个 Comparator，按照 Map 中的 "orderTime" 字段降序排列
         Comparator<Map<String, Object>> orderTimeComparator = (map1, map2) -> {
