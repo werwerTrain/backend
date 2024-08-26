@@ -1,13 +1,6 @@
 pipeline {
     agent any
     
-    environment {
-        // 设置 Docker 镜像的标签
-        DOCKER_CREDENTIALS_ID = 'dockerhub'
-        DOCKER_PASSWORD = '20050121Rabbit'
-        DOCKER_USERNAME = 'qiuer0121'
-    }
-    
     stages {
         stage('Checkout') {
             steps {
@@ -21,7 +14,7 @@ pipeline {
                 script {
                     // 清理原有镜像，构建后端 Docker 镜像
                     bat '''
-                    docker build -t backend ./backend
+                    docker build -t qiuer0121/backend ./backend
                     '''
                 }
             }
@@ -32,7 +25,7 @@ pipeline {
                 script {
                         bat '''
                         echo 20050121Rabbit| docker login -u qiuer0121 --password-stdin
-                        docker push backend
+                        docker push qiuer0121/backend:latest
                         '''
                 }
             }
