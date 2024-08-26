@@ -13,6 +13,21 @@ pipeline {
             steps {
                 script {
                     // 清理原有镜像，构建后端 Docker 镜像
+                    // 查找并停止旧的容器
+                    powershell '''
+                    $containers = docker ps -q --filter "ancestor=qiuer0121/backend:latest"
+                    foreach ($container in $containers) {
+                        Write-Output "Stopping container $container"
+                        docker stop $container
+                    }
+    
+                    $allContainers = docker ps -a -q --filter "ancestor=qiuer0121/backend:latest"
+                    foreach ($container in $allContainers) {
+                        Write-Output "Removing container $container"
+                        docker rm $container
+                    }
+                    '''
+                    bat 'docker rmi -f qiuer0121/backend:latest'
                     bat '''
                     docker build -t qiuer0121/backend ./backend
                     '''
@@ -32,20 +47,14 @@ pipeline {
         }
 
 
-        stage('Deploy to Kubernetes') {
-            steps {
-                script {
-                    bat 'kubectl apply -f k8s/backend-deployment.yaml'
-                }
-            }
-        }
-
-        stage('Service to Kubernetes') {
-            steps {
-                script {
-                    // 应用 Kubernetes 配置
-                    bat 'kubectl apply -f k8s/backend-service.yaml'
-                }
+        stage('deploy to k8s'){
+            steps{
+                bat '''
+                kubectl delete -f k8s/backend-deployment.yaml
+                kubectl apply -f k8s/backend-deployment.yaml
+                kubectl apply -f k8s/backend-service.yaml
+                '''
+                echo '部署成功'
             }
         }
     }
