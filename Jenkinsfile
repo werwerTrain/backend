@@ -14,7 +14,9 @@ pipeline {
     }
     stages {
         stage('Checkout') {
+        stage('Checkout') {
             steps {
+                git branch: 'luluplum', url: 'https://github.com/werwerTrain/backend.git'
                 git branch: 'luluplum', url: 'https://github.com/werwerTrain/backend.git'
             }
         }
