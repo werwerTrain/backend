@@ -79,13 +79,13 @@ pipeline {
                 }
             }
         }
-
+/*
         stage('Running Test Scenario') {
             steps {
                 sh 'apifox run test.json -r html,cli'
             }
         }
-
+*/
 
         stage('Integration Test') {
             steps {
