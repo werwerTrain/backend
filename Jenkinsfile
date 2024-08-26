@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                         bat '''
-                        echo "20050121Rabbit" | docker login -u qiuer0121 --password-stdin
+                        echo 20050121Rabbit| docker login -u qiuer0121 --password-stdin
                         docker push backend
                         '''
                 }
