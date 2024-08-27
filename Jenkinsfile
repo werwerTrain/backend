@@ -17,9 +17,9 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'luluplum', url: 'https://github.com/werwerTrain/backend.git'
-                git branch: 'luluplum', url: 'https://github.com/werwerTrain/backend.git'
             }
         }
+
         stage('Build Backend') {
             steps {
                 script {
@@ -41,7 +41,7 @@ pipeline {
                     sh '''
                     docker rmi -f ${BACKEND_IMAGE} || true
                     '''
-                    // 构建前端 Docker 镜像
+                    // 构建 Docker 镜像
                     sh 'docker build -t ${BACKEND_IMAGE} ./backend'
                 }
             }
@@ -81,9 +81,14 @@ pipeline {
                 }
             }
         }
+        stage('Install Apifox CLI') {
+            steps {
+                sh 'npm install -g apifox-cli'
+            }
+        }
         stage('Running Test Scenario') {
             steps {
-                sh 'apifox run ./test.json -r cli,html'
+                sh 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/455500/detail?token=xst_-7kP70toSLt_CssqOW -r html,cli'
             }
         }
 
