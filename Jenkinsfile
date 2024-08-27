@@ -4,39 +4,39 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'sxq', url: 'https://github.com/werwerTrain/backend.git'
+                git branch: 'bxr_new', url: 'https://github.com/werwerTrain/backend.git'
             }
         }
         
-        stage('delete old image in k8s'){
-            steps{
-                 bat '''
-                kubectl delete -f k8s/backend-deployment.yaml
-                kubectl delete -f k8s/backend-service.yaml
-                '''
-            }
-        }
+        // stage('delete old image in k8s'){
+        //     steps{
+        //          bat '''
+        //         kubectl delete -f k8s/backend-deployment.yaml
+        //         kubectl delete -f k8s/backend-service.yaml
+        //         '''
+        //     }
+        // }
         stage('Build Backend') {
             steps {
                 script {
                     // 清理原有镜像，构建后端 Docker 镜像
                     // 查找并停止旧的容器
                     powershell '''
-                    $containers = docker ps -q --filter "ancestor=qiuer0121/backend:latest"
+                    $containers = docker ps -q --filter "ancestor=bxr/backend:latest"
                     foreach ($container in $containers) {
                         Write-Output "Stopping container $container"
                         docker stop $container
                     }
     
-                    $allContainers = docker ps -a -q --filter "ancestor=qiuer0121/backend:latest"
+                    $allContainers = docker ps -a -q --filter "ancestor=bxr/backend:latest"
                     foreach ($container in $allContainers) {
                         Write-Output "Removing container $container"
                         docker rm $container
                     }
                     '''
-                    bat 'docker rmi -f qiuer0121/backend:latest'
+                    bat 'docker rmi -f bxr/backend:latest'
                     bat '''
-                    docker build -t qiuer0121/backend ./backend
+                    docker build -t bxr/backend ./backend
                     '''
                 }
             }
@@ -46,8 +46,8 @@ pipeline {
             steps {
                 script {
                         bat '''
-                        echo 20050121Rabbit| docker login -u qiuer0121 --password-stdin
-                        docker push qiuer0121/backend:latest
+                        echo buxinran123| docker login -u bxr0820 --password-stdin
+                        docker push bxr/backend:latest
                         '''
                 }
             }
