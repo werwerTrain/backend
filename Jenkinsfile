@@ -8,14 +8,14 @@ pipeline {
             }
         }
         
-        // stage('delete old image in k8s'){
-        //     steps{
-        //          bat '''
-        //         kubectl delete -f k8s/backend-deployment.yaml
-        //         kubectl delete -f k8s/backend-service.yaml
-        //         '''
-        //     }
-        // }
+        stage('delete old image in k8s'){
+            steps{
+                 bat '''
+                kubectl delete -f k8s/backend-deployment.yaml
+                kubectl delete -f k8s/backend-service.yaml
+                '''
+            }
+        }
         stage('Build Backend') {
             steps {
                 script {
