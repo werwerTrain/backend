@@ -81,6 +81,7 @@ pipeline {
                 }
             }
         }
+        
         stage('Install Apifox CLI') {
             steps {
                 sh 'npm install -g apifox-cli'
