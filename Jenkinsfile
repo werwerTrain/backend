@@ -15,8 +15,8 @@ pipeline {
         stage('delete old image in k8s'){
             steps{
                  bat '''
-                kubectl delete -f k8s/backend-deployment.yaml
-                kubectl delete -f k8s/backend-service.yaml
+                kubectl delete -f k8s/backend-deployment.yaml --ignore-not-found
+                kubectl delete -f k8s/backend-service.yaml --ignore-not-found
                 '''
             }
         }
