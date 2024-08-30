@@ -12,8 +12,7 @@ pipeline {
         DOCKER_PASSWORD = 'luluplum'
         DOCKER_USERNAME = 'woaixuexi0326'
     }
-    stages {
-        
+    stages {  
         stage('Checkout') {
             steps {
                 git branch: 'luluplum', url: 'https://github.com/werwerTrain/backend.git'
@@ -107,6 +106,7 @@ pipeline {
                 sh 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/456035/detail?token=xDr_qThi_-cbh9aJ6EMzNb -r html,cli'
             }
         }
+
     }
 
     post {
