@@ -68,11 +68,11 @@ pipeline {
             }
         }
         
-        stage('Install Apifox CLI') {
-            steps {
-                bat 'npm install -g apifox-cli'
-            }
-        }
+        // stage('Install Apifox CLI') {
+        //     steps {
+        //         bat 'npm install -g apifox-cli'
+        //     }
+        // }
         
         stage('Running Test Scenario') {
             steps {
