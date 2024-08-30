@@ -86,26 +86,16 @@ pipeline {
                 sh 'npm install -g apifox-cli'
             }
         }
-        stage('Running Test Scenario1') {
+        stage('Running Test Scenario') {
             steps {
                 sh 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/456010/detail?token=xAlnGIMfDSJ5cNlMMPsFw0 -r html,cli'
-            }
-        }
-        stage('Running Test Scenario2') {
-            steps {
                 sh 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/456033/detail?token=xBh34KczkGA7raLcfSZ-hR -r html,cli'
-            }
-        }
-        stage('Running Test Scenario3') {
-            steps {
                 sh 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/455500/detail?token=xst_-7kP70toSLt_CssqOW -r html,cli'
-            }
-        }
-        stage('Running Test Scenario4') {
-            steps {
                 sh 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/456035/detail?token=xDr_qThi_-cbh9aJ6EMzNb -r html,cli'
             }
         }
+       
+        
 
     }
 
