@@ -87,23 +87,24 @@ pipeline {
                 sh 'npm install -g apifox-cli'
             }
         }
-        stage('Running Test Scenario') {
+        stage('Running Test Scenario1') {
+            steps {
+                sh 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/456010/detail?token=xAlnGIMfDSJ5cNlMMPsFw0 -r html,cli'
+            }
+        }
+        stage('Running Test Scenario2') {
+            steps {
+                sh 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/456033/detail?token=xBh34KczkGA7raLcfSZ-hR -r html,cli'
+            }
+        }
+        stage('Running Test Scenario3') {
             steps {
                 sh 'apifox run https://api.apifox.com/api/v1/projects/4458630/api-test/ci-config/455500/detail?token=xst_-7kP70toSLt_CssqOW -r html,cli'
             }
         }
-
-        stage('Integration Test') {
+        stage('Running Test Scenario4') {
             steps {
-                echo 'tested!'
-                // 等待应用启动
-                //sleep(time: 30, unit: 'SECONDS')
-                
-                // 使用测试工具进行集成测试
-                
-                // 使用 Postman Collection 进行测试
-                //sh 'newman run collection.json'  // 如果使用 Newman 运行 Postman 测试
-                
+                sh 'apifox run --access-token $APIFOX_ACCESS_TOKEN -t 4941261 -e 20531310 -n 1 -r html,cli'
             }
         }
     }
